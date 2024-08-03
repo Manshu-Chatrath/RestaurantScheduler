@@ -21,13 +21,14 @@ dishQueue.process(async (job: any) => {
   }
 });
 dishQueue.on("failed", async (job: any, err: any) => {
+  console.log(err);
   await job.retry();
 });
 
 sequelize
   .sync()
   .then((res) => {
-    app.listen(4003, () =>
+    app.listen(process.env.port || 4003, () =>
       console.log(`Server is running on http://localhost:4003`)
     );
   })
