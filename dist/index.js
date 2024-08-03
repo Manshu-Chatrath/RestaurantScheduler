@@ -24,7 +24,7 @@ app.use(cors());
 app.use(express_1.default.json());
 const dishQueue = new Bull("dishQueue", process.env.REDIS_URL);
 dishQueue.process((job) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id, type, startTime = null, endTime = null } = job.data;
+    const { id, type } = job.data;
     try {
         if (type === "removePromotion") {
             yield dishes_1.default.update({ discount: false }, { where: { id: id } });

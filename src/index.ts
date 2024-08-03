@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 const dishQueue = new Bull("dishQueue", process.env.REDIS_URL);
 dishQueue.process(async (job: any) => {
-  const { id, type, startTime = null, endTime = null } = job.data;
+  const { id, type } = job.data;
 
   try {
     if (type === "removePromotion") {
