@@ -35,11 +35,12 @@ dishQueue.process((job) => __awaiter(void 0, void 0, void 0, function* () {
     }
 }));
 dishQueue.on("failed", (job, err) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(err);
     yield job.retry();
 }));
 database_1.default
     .sync()
     .then((res) => {
-    app.listen(4003, () => console.log(`Server is running on http://localhost:4003`));
+    app.listen(process.env.port || 4003, () => console.log(`Server is running on http://localhost:4003`));
 })
     .catch((err) => console.log(err));
