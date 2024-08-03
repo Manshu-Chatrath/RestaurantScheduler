@@ -25,26 +25,12 @@ app.use(express_1.default.json());
 const dishQueue = new Bull("dishQueue", process.env.REDIS_URL);
 dishQueue.process((job) => __awaiter(void 0, void 0, void 0, function* () {
     const { id, type, startTime = null, endTime = null } = job.data;
-    const transaction = yield database_1.default.transaction();
     try {
         if (type === "removePromotion") {
-            yield dishes_1.default.update({ discount: false }, { where: { id: id }, transaction });
-            yield transaction.commit();
-        }
-        else if (type === "initiateRemoval") {
-            if (startTime !== null && endTime !== null) {
-                dishQueue.add({ id: id, type: "removePromotion" }, {
-                    delay: endTime - startTime,
-                    attempts: 5,
-                });
-            }
-            else {
-                throw new Error("startTime and endTime must be provided for initiateRemoval");
-            }
+            yield dishes_1.default.update({ discount: false }, { where: { id: id } });
         }
     }
     catch (e) {
-        yield transaction.rollback();
         console.error(e);
     }
 }));
