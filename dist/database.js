@@ -20,6 +20,7 @@ const sequelize = new sequelize_typescript_1.Sequelize({
     username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
+    logging: console.log,
     models: [
         supervisors_1.default,
         categories_1.default,
