@@ -15,14 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dishes_1 = __importDefault(require("./models/dishes"));
 const database_1 = __importDefault(require("./database"));
-const dotenv = require("dotenv");
+const dotenv_1 = __importDefault(require("dotenv"));
 const app = (0, express_1.default)();
 const cors = require("cors");
 const Bull = require("bull");
-dotenv.config();
+dotenv_1.default.config();
 app.use(cors());
 app.use(express_1.default.json());
 const dishQueue = new Bull("dishQueue", process.env.REDIS_URL);
+console.log(process.env);
 dishQueue.process((job) => __awaiter(void 0, void 0, void 0, function* () {
     const { id, type } = job.data;
     try {
