@@ -2,16 +2,6 @@
 
 This project is a dedicated server for handling background tasks for the inventory management system. It leverages Bull, a Node.js library for managing distributed jobs and message queues, and Redis for job storage.
 
-## Table of Contents
-
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
-- [Scripts](#scripts)
-- [Configuration](#configuration)
-- [Redis Setup](#redis-setup)
-- [Job Management](#job-management)
-- [Build and Deployment](#build-and-deployment)
 
 ## Features
 
