@@ -3,6 +3,18 @@
 This project is a dedicated server for handling background tasks for the inventory management system. It leverages Bull, a Node.js library for managing distributed jobs and message queues, and Redis for job storage.
 
 
+# env variables you need
+AWS_ACCESS_KEY
+AWS_SECRET_ACCESS_KEY
+EMAIL_PASSWORD
+MYSQL_DATABASE
+MYSQL_HOST
+MYSQL_PASSWORD
+MYSQL_PORT
+MYSQL_USER
+REDIS_URL
+SECRET_KEY
+
 ## Features
 
 - **Background Task Management**: Efficient handling of background tasks such as updating promotions and processing orders.
@@ -18,18 +30,15 @@ This project is a dedicated server for handling background tasks for the invento
 - **Sequelize**: Promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite, and Microsoft SQL Server.
 - **TypeScript**: Adds static types to JavaScript for a better development experience.
 
-## Getting Started
+
 
 ### Prerequisites
 
-- Node.js (v14.x or higher)
+- Node.js (v18.x or higher)
 - Redis server
 
 ### Installation
-
 Clone the repository and install dependencies:
-
-```bash
 git clone <repository-url>
 cd inventory-server
 npm install
